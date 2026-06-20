@@ -1,6 +1,6 @@
 # Replication Package — Horizon Scanning Pipeline
 
-**Thesis:** *Detecting Early Regulatory Signals in Dutch Parliamentary Documents Using LLMs*
+**Thesis:** *Detecting Early Regulatory Signals in Government Correspondence*
 **Author:** Tom Coldenhoff
 **Institution:** Utrecht University, MSc Business Informatics
 **Date:** June 2026
@@ -46,7 +46,7 @@ replication-package/
 |---|---|
 | LLM model | `eu.anthropic.claude-sonnet-4-6` (AWS Bedrock, EU region) |
 | Chunk size | 2500 tokens, 400 token overlap |
-| Completeness threshold | 5 / 10 (chunks below this are discarded) |
+| Completeness threshold | 5 / 8 (chunks below this are discarded) |
 | Stakeholder profile | FROZEN 2026-04-20 — `code/prompts/stakeholder_profile.md` |
 | Document types ingested | Brief regering, Antwoord schriftelijke vragen, EU-voorstel, Brief Europese Commissie, Lijst met EU-voorstellen |
 | Data source | Tweede Kamer OData API v4 — `https://gegevensmagazijn.tweedekamer.nl/OData/v4/2.0` |
