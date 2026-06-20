@@ -1,10 +1,10 @@
-"""Remove all pipeline data except the 5 ASML-relevant documents.
+"""Remove all pipeline data except the 5 target documents for the expert validation session.
 
-Deletes from synthesis → gold → silver → bronze in reverse FK order,
-keeping only the doc_ids seeded for the ASML expert validation session.
+Deletes from synthesis -> gold -> silver -> bronze in reverse FK order,
+keeping only the doc_ids seeded for the semiconductor industry expert session.
 
 Usage:
-    docker-compose run --rm api python purge_non_asml.py
+    docker-compose run --rm api python purge_non_target_docs.py
 """
 
 from pipeline.db.connection import transaction
@@ -37,4 +37,4 @@ with transaction() as conn:
     )
     print(f"  bronze: deleted {cur.rowcount} rows")
 
-print("Done — only ASML documents remain.")
+print("Done — only target session documents remain.")

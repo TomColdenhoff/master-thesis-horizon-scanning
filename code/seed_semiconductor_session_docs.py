@@ -1,17 +1,16 @@
-"""Seed the bronze store with ASML-relevant government letters for the expert validation session.
+"""Seed the bronze store with government letters for the semiconductor industry expert session.
 
-These documents were selected for the think-aloud session with:
-  - ASML, Head of Compliance Operations & Processes
-  - ASML, Senior Legal Counsel Corporate
+These documents were selected for the think-aloud session with experts from a large
+semiconductor company (Head of Compliance Operations & Processes and Senior Legal Counsel).
 
-They cover the core regulatory domains relevant to ASML:
+They cover the core regulatory domains relevant to the semiconductor industry:
   1. Export controls on semiconductor equipment
   2. FDI / investment screening (Wet vifo)
   3. Supply chain due diligence (CSDDD/CSRD)
   4. Broader economic security / strategic resilience
 
 Usage (inside the pipeline container or with local venv):
-    python seed_asml_session_docs.py [--dry-run]
+    python seed_semiconductor_session_docs.py [--dry-run]
 
 The script queries the OData API by subject keyword to resolve UUIDs,
 then seeds found documents through the standard bronze pipeline.
@@ -29,7 +28,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(mess
 log = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
-# Target documents — defined as (keyword, soort, year_from) tuples.
+# Target documents -- defined as (keyword, soort, year_from) tuples.
 # The script finds the best match (most recent) for each and seeds it.
 # ---------------------------------------------------------------------------
 TARGET_SIGNALS = [
@@ -37,8 +36,8 @@ TARGET_SIGNALS = [
         "label": "Voortgang halfgeleiderindustrie in veranderende geopolitieke omgeving",
         "rationale": (
             "Directly relevant for both experts: covers export control expansions "
-            "(sept 2023, sept 2024, april 2025), ASML's strategic importance, "
-            "and government obligations re: national security licensing."
+            "(sept 2023, sept 2024, april 2025), the strategic importance of the "
+            "semiconductor industry, and government obligations re: national security licensing."
         ),
         "keyword": "halfgeleiderindustrie",
         "soort": "Brief regering",
@@ -48,7 +47,7 @@ TARGET_SIGNALS = [
         "label": "Nationale exportcontrolemaatregelen hoogwaardige en sensitieve technologieën",
         "rationale": (
             "Compliance-critical: announces new national licensing requirements "
-            "published in the Staatscourant for high-value tech exports — triggers "
+            "published in the Staatscourant for high-value tech exports, triggering "
             "immediate operational compliance work for Head of Compliance."
         ),
         "keyword": "nationale exportcontrolemaatregelen",
@@ -58,7 +57,7 @@ TARGET_SIGNALS = [
     {
         "label": "Rapport Nederlands exportcontrolebeleid in 2023",
         "rationale": (
-            "Annual compliance overview — gives the Legal Counsel the full picture "
+            "Annual compliance overview, giving the Legal Counsel the full picture "
             "of dual-use and military export licensing volumes, refusals, and "
             "enforcement trends."
         ),
@@ -69,20 +68,20 @@ TARGET_SIGNALS = [
     {
         "label": "Stand van zaken herziening Verordening screening buitenlandse directe investeringen",
         "rationale": (
-            "FDI screening (Wet vifo) revision at EU level — directly affects ASML "
-            "as a strategic asset. Legal Counsel must track whether new sector-specific "
-            "tests (incl. semiconductors) will apply."
+            "FDI screening (Wet vifo) revision at EU level, directly relevant to "
+            "semiconductor companies as strategic assets. Legal Counsel must track "
+            "whether new sector-specific tests (incl. semiconductors) will apply."
         ),
         "keyword": "screening buitenlandse directe investeringen",
         "soort": "Brief regering",
         "year_from": "2025-01-01",
     },
     {
-        "label": "Stop-the-clock CSDDD / Omnibus I — verlenging implementatietermijn",
+        "label": "Stop-the-clock CSDDD / Omnibus I -- verlenging implementatietermijn",
         "rationale": (
-            "Supply chain due diligence (CSDDD) implementation delay — compliance "
-            "teams need to track revised timelines. Directly affects ASML's supplier "
-            "compliance programme."
+            "Supply chain due diligence (CSDDD) implementation delay. Compliance "
+            "teams need to track revised timelines, as this directly affects supplier "
+            "compliance programmes in the semiconductor industry."
         ),
         "keyword": "CSDDD",
         "soort": "Brief regering",
@@ -91,7 +90,7 @@ TARGET_SIGNALS = [
     {
         "label": "Nederlandse inzet CRP Omnibus-CSDDD",
         "rationale": (
-            "Government position on the CSDDD renegotiation — signals which "
+            "Government position on the CSDDD renegotiation, signalling which "
             "due diligence obligations are likely to survive Omnibus I reforms. "
             "Critical for Legal Counsel planning the compliance roadmap."
         ),
@@ -103,8 +102,8 @@ TARGET_SIGNALS = [
         "label": "Investeren in een weerbare economie / maatschappelijke weerbaarheid",
         "rationale": (
             "Signals broad economic security obligations including technology "
-            "protection requirements for strategic companies like ASML — relevant "
-            "for both compliance and legal risk assessment."
+            "protection requirements for strategic companies in the semiconductor "
+            "sector, relevant for both compliance and legal risk assessment."
         ),
         "keyword": "investeren in een weerbare",
         "soort": "Brief regering",
@@ -136,7 +135,7 @@ def _find_doc_by_keyword(keyword: str, soort: str, year_from: str) -> dict | Non
 
 
 def seed(dry_run: bool = False) -> None:
-    # Late imports — only needed when actually seeding
+    # Late imports -- only needed when actually seeding
     from alembic.config import Config as AlembicConfig
     from alembic import command as alembic_command
     import config
@@ -158,7 +157,7 @@ def seed(dry_run: bool = False) -> None:
 
     for target in TARGET_SIGNALS:
         label = target["label"]
-        log.info("\n── %s", label)
+        log.info("\n-- %s", label)
         log.info("   Rationale: %s", target["rationale"])
 
         # Resolve UUID via OData keyword search
@@ -166,7 +165,7 @@ def seed(dry_run: bool = False) -> None:
             target["keyword"], target["soort"], target["year_from"]
         )
         if not match:
-            log.warning("   No match found for keyword=%r — skipping", target["keyword"])
+            log.warning("   No match found for keyword=%r -- skipping", target["keyword"])
             failed += 1
             continue
 
@@ -181,7 +180,7 @@ def seed(dry_run: bool = False) -> None:
             continue
 
         if repo.exists(doc_id):
-            log.info("   Already in bronze — skipping")
+            log.info("   Already in bronze -- skipping")
             skipped += 1
             continue
 
@@ -218,7 +217,7 @@ def seed(dry_run: bool = False) -> None:
         )
         try:
             repo.insert(record)
-            log.info("   Inserted — %d chars", len(raw_text))
+            log.info("   Inserted -- %d chars", len(raw_text))
             ok += 1
         except Exception as exc:
             log.error("   DB insert failed: %s", exc)
@@ -230,7 +229,7 @@ def seed(dry_run: bool = False) -> None:
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Seed ASML session documents into bronze.")
+    parser = argparse.ArgumentParser(description="Seed semiconductor industry session documents into bronze.")
     parser.add_argument(
         "--dry-run",
         action="store_true",
