@@ -1,0 +1,19 @@
+Theme 1: The tool asks too much from the user when scanning
+
+This is the main problem identified in the interview. UX Expert 1 mentioned it first and came back to it repeatedly. Cards contain too much information, they all look the same, and the page is too long without any fixed reference points. There is no way to compare signals without scrolling up and down. Sorting is missing completely. The top two improvements suggested by UX Expert 1, compact cards and sorting, both fall under this theme. These are also well-known UX patterns that are practical to implement.
+
+Theme 2: The evaluation system does not support the user's workflow
+
+The review options are not clear enough for users without domain knowledge. "Weak" and "discard" overlap in meaning. There is no feedback for "not sure," no way to change a decision, and the "reviewed" tab has no clear function or follow-up action. This goes beyond a UX issue. It points to a gap in the workflow design. The tool offers a way to evaluate signals, but does not guide the user on what to do next.
+
+Theme 3: Labels and metadata are not self-explanatory
+
+Tags, the completeness score, and fields like "general" are not understood without explanation. UX Expert 1 suggested tooltips, but also stated the core principle clearly: the UI should be clear without any extra help. This affects both the card design and the labeling system behind the tool.
+
+Theme 4: The core functionality works well
+
+Despite the criticism, UX Expert 1 was clearly positive about the concept. She immediately understood what the tool does, the reviewed/unreviewed split was clear, the review interaction felt natural, and the chunk and highlight feature was genuinely valued. The foundation is strong. The problems are in the scalability and clarity of the layer on top.
+
+Summary:
+
+The usability test with UX Expert 1 shows that the system works as a concept, but the current interface is not ready for realistic use at scale. The three main areas for improvement are: (1) a compact card design with expand and collapse, (2) a redesign of the evaluation system with clearer labels, a re-evaluation option, and clear next steps, and (3) better labeling and progressive disclosure for users without domain knowledge. The positive findings confirm that the core idea of reviewing signals based on structured data is well received.

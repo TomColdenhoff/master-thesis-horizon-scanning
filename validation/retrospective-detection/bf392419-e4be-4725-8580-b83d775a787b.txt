@@ -1,0 +1,31 @@
+tomcoldenhoff@Toms-MacBook-Air data % docker-compose run --rm pipeline python run_pipeline.py --doc-id bf392419-e4be-4725-8580-b83d775a787b
+WARN[0003] Found orphan containers ([src-pipeline-run-c07ee6411806]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up. 
+[+] Creating 1/1
+ ✔ Container src-db-1  Running                                                                                             0.0s 
+2026-05-17 19:31:49,329 INFO Context impl PostgresqlImpl.
+2026-05-17 19:31:49,329 INFO Will assume transactional DDL.
+2026-05-17 19:31:49,335 INFO Single-document mode: doc_id=bf392419-e4be-4725-8580-b83d775a787b stages=['silver', 'gold', 'synthesis']
+2026-05-17 19:31:49,416 INFO doc_id=bf392419-e4be-4725-8580-b83d775a787b not in bronze — fetching from OData
+2026-05-17 19:31:49,416 INFO Fetching single document metadata for doc_id=bf392419-e4be-4725-8580-b83d775a787b
+2026-05-17 19:31:49,508 INFO Downloading file for doc_id=bf392419-e4be-4725-8580-b83d775a787b
+2026-05-17 19:31:49,593 INFO Saved application/pdf (21945 bytes) → data/bf392419-e4be-4725-8580-b83d775a787b.pdf
+2026-05-17 19:31:49,611 INFO Bronze record created for doc_id=bf392419-e4be-4725-8580-b83d775a787b
+2026-05-17 19:31:49,615 INFO Cleared table=synthesis for doc_id=bf392419-e4be-4725-8580-b83d775a787b
+2026-05-17 19:31:49,615 INFO Cleared table=gold_discarded for doc_id=bf392419-e4be-4725-8580-b83d775a787b
+2026-05-17 19:31:49,615 INFO Cleared table=gold for doc_id=bf392419-e4be-4725-8580-b83d775a787b
+2026-05-17 19:31:49,615 INFO Cleared table=silver_rejected for doc_id=bf392419-e4be-4725-8580-b83d775a787b
+2026-05-17 19:31:49,615 INFO Cleared table=silver for doc_id=bf392419-e4be-4725-8580-b83d775a787b
+2026-05-17 19:31:49,615 INFO Single-doc stage start: silver doc_id=bf392419-e4be-4725-8580-b83d775a787b
+2026-05-17 19:31:49,984 INFO Found credentials in environment variables.
+2026-05-17 19:31:52,060 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 19:31:52,075 INFO Rejected doc_id=bf392419-e4be-4725-8580-b83d775a787b in=615 out=62 (2.2s) reason='The document merely transmits an evaluation report on fiscal entrepreneur regulations without any substantive policy response or normative content signaling new obligations, prohibitions, or regulatory changes, as the caretaker cabinet explicitly declined to provide a substantive reaction.'
+2026-05-17 19:31:52,080 INFO Silver complete — accepted=0 rejected=1 errors=0 total=2.2s
+2026-05-17 19:31:52,080 INFO Single-doc stage done:  silver doc_id=bf392419-e4be-4725-8580-b83d775a787b
+2026-05-17 19:31:52,080 INFO Single-doc stage start: gold doc_id=bf392419-e4be-4725-8580-b83d775a787b
+2026-05-17 19:31:52,091 INFO Gold complete — docs=0 written=0 discarded=0 errors=0 total=0.0s
+2026-05-17 19:31:52,091 INFO Single-doc stage done:  gold doc_id=bf392419-e4be-4725-8580-b83d775a787b
+2026-05-17 19:31:52,091 INFO Single-doc stage start: synthesis doc_id=bf392419-e4be-4725-8580-b83d775a787b
+2026-05-17 19:31:52,101 WARNING No gold records found for doc_id=bf392419-e4be-4725-8580-b83d775a787b — skipping
+2026-05-17 19:31:52,101 INFO Synthesis complete — written=0 skipped=1 errors=0 total=0.0s
+2026-05-17 19:31:52,101 INFO Single-doc stage done:  synthesis doc_id=bf392419-e4be-4725-8580-b83d775a787b
+2026-05-17 19:31:52,101 INFO Single-document run complete in 2.8s

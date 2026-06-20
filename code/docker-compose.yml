@@ -1,0 +1,59 @@
+services:
+
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: horizon_scanning
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      retries: 5
+
+  pipeline:
+    build: .
+    # Run manually: docker-compose run --rm pipeline
+    # Or a specific stage: docker-compose run --rm pipeline python run_pipeline.py --stage bronze
+    command: python run_pipeline.py
+    env_file: .env
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: horizon_scanning
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./data:/app/data
+      # - ./src:/app
+    profiles:
+      - pipeline   # only starts when explicitly requested
+
+  api:
+    build: .
+    command: uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
+    env_file: .env
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: horizon_scanning
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app          # hot-reload: source changes on host are picked up instantly
+      - ./data:/app/data
+
+volumes:
+  pgdata:

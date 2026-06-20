@@ -1,0 +1,24 @@
+Theme 1: The concept and core UI are validated by a domain expert
+
+Expert 2 works with horizon scanning professionally and recognized the tool. The reviewed/unreviewed structure, the sector classifications, and the source links all match what his company builds. He found the interface clear, the labels readable, and the overall design good. This is the strongest external validation in the early interviews: not just that the tool works, but that it solves a problem professionals already deal with every day.
+
+Theme 2: Fast decision-making is blocked by too much text
+
+This is Expert 2's main UI concern, and it directly matches UX Expert 1's feedback on information overload. Both participants independently said there is too much information on the cards. Expert 2 was specific: he wants one sentence first, then the option to expand. His goal is to make a quick decision and move on. The current card design does not support that fast path.
+
+Theme 3: The tool does not yet account for different user roles
+
+Expert 2 thinks in roles: a first reviewer, a lobbyist, a business decision-maker. He also raised a question UX Expert 1 did not: from which perspective should you evaluate a signal? Your own sector, or in general? These two issues together suggest the tool needs a clearer workflow design that reflects how professionals actually use it. This extends UX Expert 1's finding about the missing post-review workflow into a broader role-based design problem.
+
+Theme 4: Human control and audit trails are the foundation of AI trust
+
+When asked how to convince people that AI output is trustworthy, Expert 2 gave a structured answer based on his own company's practice: require human approval at every step, store a full audit trail of all decisions, use overrides to score AI quality, and let the system learn from those scores over time. He confirmed the current design already has the first layer (human-in-the-loop) and pointed to the next layers that are still missing.
+
+Theme 5: The technical pipeline is sound and ready to scale
+
+Expert 2 validated the architecture and gave one clear optimization: use generic chunk storage for all profiles, with profile-specific Gold layer runs. He also recommended storing all Gold outputs from the start, even if there is no time to analyze them immediately. His overall judgment is that the system is already scalable, and that one profile today can easily become twenty with minimal changes.
+
+Summary:
+
+The interview with Expert 2 provides strong domain and technical validation for the horizon scanning tool. He confirmed the concept, the data source, the pipeline design, and the overall structure are all sound. His main UI feedback was a one-sentence summary and collapsible cards. This directly reinforces what UX Expert 1 said, making card redesign the most consistent finding across both interviews. His unique contributions are the role-based workflow perspective, a concrete technical optimization for multi-profile scaling, and a detailed framework for building AI trust through human control, audit trails, and continuous learning. Where UX Expert 1 tested the tool as a non-expert user, Expert 2 validated it as a professional who builds similar systems. Together, the two interviews cover both the usability and the domain credibility of the tool.
+

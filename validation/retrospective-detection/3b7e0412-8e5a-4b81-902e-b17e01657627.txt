@@ -1,0 +1,31 @@
+tomcoldenhoff@Toms-MacBook-Air data % docker-compose run --rm pipeline python run_pipeline.py --doc-id 3b7e0412-8e5a-4b81-902e-b17e01657627
+WARN[0003] Found orphan containers ([src-pipeline-run-c07ee6411806]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up. 
+[+] Creating 1/1
+ ✔ Container src-db-1  Running                                                                                             0.0s 
+2026-05-17 18:48:15,402 INFO Context impl PostgresqlImpl.
+2026-05-17 18:48:15,403 INFO Will assume transactional DDL.
+2026-05-17 18:48:15,409 INFO Single-document mode: doc_id=3b7e0412-8e5a-4b81-902e-b17e01657627 stages=['silver', 'gold', 'synthesis']
+2026-05-17 18:48:15,515 INFO Cleared table=synthesis for doc_id=3b7e0412-8e5a-4b81-902e-b17e01657627
+2026-05-17 18:48:15,515 INFO Cleared table=gold_discarded for doc_id=3b7e0412-8e5a-4b81-902e-b17e01657627
+2026-05-17 18:48:15,516 INFO Cleared table=gold for doc_id=3b7e0412-8e5a-4b81-902e-b17e01657627
+2026-05-17 18:48:15,516 INFO Cleared table=silver_rejected for doc_id=3b7e0412-8e5a-4b81-902e-b17e01657627
+2026-05-17 18:48:15,516 INFO Cleared table=silver for doc_id=3b7e0412-8e5a-4b81-902e-b17e01657627
+2026-05-17 18:48:15,517 INFO Single-doc stage start: silver doc_id=3b7e0412-8e5a-4b81-902e-b17e01657627
+2026-05-17 18:48:15,884 INFO Found credentials in environment variables.
+2026-05-17 18:48:18,483 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:48:18,516 INFO Accepted doc_id=3b7e0412-8e5a-4b81-902e-b17e01657627 chunks=2 in=1724 out=68 (2.7s) reason='This ministerial letter transmits 39 technical policy variants on labour market regulation — covering employment contracts, triangular labour relationships, sick-pay obligations, and related fiscal/social security rules — signalling potential new obligations and regulatory changes affecting employers and workers across multiple sectors.'
+2026-05-17 18:48:18,516 INFO Silver complete — accepted=1 rejected=0 errors=0 total=2.7s
+2026-05-17 18:48:18,516 INFO Single-doc stage done:  silver doc_id=3b7e0412-8e5a-4b81-902e-b17e01657627
+2026-05-17 18:48:18,516 INFO Single-doc stage start: gold doc_id=3b7e0412-8e5a-4b81-902e-b17e01657627
+2026-05-17 18:48:31,795 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:48:31,815 INFO Gold chunk written doc_id=3b7e0412-8e5a-4b81-902e-b17e01657627 chunk=0 score=7 in=3705 out=693 (13.3s)
+2026-05-17 18:48:40,253 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:48:40,277 INFO Gold complete — docs=1 written=1 discarded=1 errors=0 total=21.8s
+2026-05-17 18:48:40,277 INFO Single-doc stage done:  gold doc_id=3b7e0412-8e5a-4b81-902e-b17e01657627
+2026-05-17 18:48:40,277 INFO Single-doc stage start: synthesis doc_id=3b7e0412-8e5a-4b81-902e-b17e01657627
+2026-05-17 18:48:50,349 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:48:50,362 INFO Synthesis written doc_id=3b7e0412-8e5a-4b81-902e-b17e01657627 score=7 sectors=['Labour market', 'Corporate / governance'] in=1407 out=602 (10.1s)
+2026-05-17 18:48:50,363 INFO Synthesis complete — written=1 skipped=0 errors=0 total=10.1s
+2026-05-17 18:48:50,363 INFO Single-doc stage done:  synthesis doc_id=3b7e0412-8e5a-4b81-902e-b17e01657627
+2026-05-17 18:48:50,363 INFO Single-document run complete in 35.0s
+tomcoldenhoff@Toms-MacBook-Air data %

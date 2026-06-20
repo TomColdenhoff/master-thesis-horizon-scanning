@@ -1,0 +1,31 @@
+Theme 1: The concept and its value for legal professionals are clear from the start
+
+Expert 3 understood what the tool does within the first minute of using it. He recognized the chunk-and-highlight feature as useful and immediately identified a minister's answer in parliament as a strong signal. He said it was "quite impressive" that the tool reads government documents that almost no one looks at. This confirms the finding from Expert 2: the tool is easy to understand for people with domain knowledge, and it solves a problem they already deal with at work.
+
+Theme 2: Not all signals are equally reliable, and the tool does not show this
+
+Expert 3 made a distinction that the other participants did not raise. For topics that are not politically charged, like farm regulations or energy efficiency, decisions are easier to predict because there is a clear argument and little debate. For political topics like migration, or for decisions made during a crisis like COVID, the situation changes too fast to predict. He also said that a direct answer from a minister in parliament is a stronger signal than a general government letter. The tool currently does not show this difference to the user, which makes it harder to judge a signal correctly.
+
+Theme 3: The metadata model is useful, but the labels do not match legal language
+
+Expert 3 did not understand "legal modality," "general," or the 8/8 completeness score without explanation. This is more important here than in the other interviews, because Expert 3 has a legal background. Once the committed, proposed, and advisory distinction was explained, Expert 3 said this was "one of the most important factors" for knowing whether a law will actually come into force. This matches the finding from the other interviews about unclear labels, but adds one key point: the data behind the labels is good, the problem is just the terminology.
+
+Theme 4: The tool is most useful for law firms and in-house legal teams, not companies in general
+
+When asked whether companies could use the tool to stay compliant, Expert 3 reframed the answer. He said that large companies often already have ways to follow new legislation, for example through an outsourced law firm. The tool is most useful for the people doing the legal work directly: lawyers and compliance professionals. He also introduced a use case that the other participants did not mention. If the tool can predict regulatory change 30 to 36 months in advance, companies can use this information not just for compliance, but for long-term strategy. They can factor expected changes into business decisions they make years ahead. This is the strongest use case raised in any of the three interviews at that point.
+
+Theme 5: Expanding the tool to regulatory standards would make it much more valuable
+
+Expert 3 suggested on his own that the tool could also track changes to standards like ISO or NEN, not just legislation. He said these standards are hard to follow because there are so many of them and they change without much public attention. His exact words: "if you manage to do this, I think that would be a game changer." Neither of the other participants raised this. It is a concrete direction for future work.
+
+Theme 6: The amount of information is acceptable for a professional tool, but the layout can improve
+
+Expert 3 noticed there is a lot of information on the cards, but he was less critical about this than UX Expert 1 or Expert 2. He said that professional tools can be complex as long as users learn how they work. He compared it to an AI tool he used at an internship that was also complex but very useful once he understood it. His suggestion was to make the layout "easier to read" rather than removing content. This is a useful counterpoint to the other interviews: the solution might be a better layout rather than fewer fields.
+
+Theme 7: After reviewing a signal, users expect the system to react to their choice
+
+Expert 3 had a clear idea of what should happen after he evaluated a signal. For "not sure," the system should keep looking for more information. For "strong signal," it can stop. For "discard," the signal should disappear. For "weak signal," it should also keep looking. This matches the finding from the other interviews that the post-review workflow is unclear, but Expert 3 adds a specific expectation: the system should change its behavior based on the user's evaluation. Right now, the tool does not communicate what happens next, and that creates confusion.
+
+Summary:
+
+Expert 3 confirms the tool's value from a legal and compliance perspective. His main contributions are: signal reliability depends on topic type, source authority, and political context, which the tool does not yet show; the most valuable use case is long-term business strategy, not just day-to-day compliance; the data model is good, but the terminology needs to match legal practice; and expanding to regulatory standards could be a major step forward. On information density, he is the least critical of the three participants and offers a different view: complex tools are fine for professionals. On post-review workflow, he agrees with the other interviews but adds that the system should actively respond to the user's evaluation. Across all three interviews, the three most consistent findings are: the cards contain too much information or need a better layout, the metadata labels need to be clearer, and the post-review workflow needs to be explained to the user.

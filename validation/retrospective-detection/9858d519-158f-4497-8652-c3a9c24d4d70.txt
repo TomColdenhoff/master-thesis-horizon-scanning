@@ -1,0 +1,32 @@
+tomcoldenhoff@Toms-MacBook-Air src % docker-compose run --rm pipeline python run_pipeline.py --doc-id 9858d519-158f-4497-8652-c3a9c24d4d70
+WARN[0003] Found orphan containers ([src-pipeline-run-c07ee6411806]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up. 
+[+] Creating 1/1
+ ✔ Container src-db-1  Running                                                                                             0.0s 
+2026-05-17 19:31:56,428 INFO Context impl PostgresqlImpl.
+2026-05-17 19:31:56,429 INFO Will assume transactional DDL.
+2026-05-17 19:31:56,434 INFO Single-document mode: doc_id=9858d519-158f-4497-8652-c3a9c24d4d70 stages=['silver', 'gold', 'synthesis']
+2026-05-17 19:31:56,510 INFO doc_id=9858d519-158f-4497-8652-c3a9c24d4d70 not in bronze — fetching from OData
+2026-05-17 19:31:56,510 INFO Fetching single document metadata for doc_id=9858d519-158f-4497-8652-c3a9c24d4d70
+2026-05-17 19:31:56,606 INFO Downloading file for doc_id=9858d519-158f-4497-8652-c3a9c24d4d70
+2026-05-17 19:31:56,851 INFO Saved application/pdf (25522 bytes) → data/9858d519-158f-4497-8652-c3a9c24d4d70.pdf
+2026-05-17 19:31:56,892 INFO Bronze record created for doc_id=9858d519-158f-4497-8652-c3a9c24d4d70
+2026-05-17 19:31:56,896 INFO Cleared table=synthesis for doc_id=9858d519-158f-4497-8652-c3a9c24d4d70
+2026-05-17 19:31:56,896 INFO Cleared table=gold_discarded for doc_id=9858d519-158f-4497-8652-c3a9c24d4d70
+2026-05-17 19:31:56,896 INFO Cleared table=gold for doc_id=9858d519-158f-4497-8652-c3a9c24d4d70
+2026-05-17 19:31:56,896 INFO Cleared table=silver_rejected for doc_id=9858d519-158f-4497-8652-c3a9c24d4d70
+2026-05-17 19:31:56,897 INFO Cleared table=silver for doc_id=9858d519-158f-4497-8652-c3a9c24d4d70
+2026-05-17 19:31:56,897 INFO Single-doc stage start: silver doc_id=9858d519-158f-4497-8652-c3a9c24d4d70
+2026-05-17 19:31:57,205 INFO Found credentials in environment variables.
+2026-05-17 19:31:59,344 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 19:31:59,370 INFO Rejected doc_id=9858d519-158f-4497-8652-c3a9c24d4d70 in=1925 out=58 (2.3s) reason='The document concerns administrative updates on the procurement and technical adjustments of civic integration (inburgering) exams, with no new obligations, prohibitions, competences, or permit requirements signalled for any regulated sector.'
+2026-05-17 19:31:59,374 INFO Silver complete — accepted=0 rejected=1 errors=0 total=2.3s
+2026-05-17 19:31:59,374 INFO Single-doc stage done:  silver doc_id=9858d519-158f-4497-8652-c3a9c24d4d70
+2026-05-17 19:31:59,374 INFO Single-doc stage start: gold doc_id=9858d519-158f-4497-8652-c3a9c24d4d70
+2026-05-17 19:31:59,383 INFO Gold complete — docs=0 written=0 discarded=0 errors=0 total=0.0s
+2026-05-17 19:31:59,383 INFO Single-doc stage done:  gold doc_id=9858d519-158f-4497-8652-c3a9c24d4d70
+2026-05-17 19:31:59,383 INFO Single-doc stage start: synthesis doc_id=9858d519-158f-4497-8652-c3a9c24d4d70
+2026-05-17 19:31:59,393 WARNING No gold records found for doc_id=9858d519-158f-4497-8652-c3a9c24d4d70 — skipping
+2026-05-17 19:31:59,393 INFO Synthesis complete — written=0 skipped=1 errors=0 total=0.0s
+2026-05-17 19:31:59,393 INFO Single-doc stage done:  synthesis doc_id=9858d519-158f-4497-8652-c3a9c24d4d70
+2026-05-17 19:31:59,393 INFO Single-document run complete in 3.0s
+tomcoldenhoff@Toms-MacBook-Air src % 

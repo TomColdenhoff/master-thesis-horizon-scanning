@@ -1,0 +1,33 @@
+tomcoldenhoff@Toms-MacBook-Air src % docker-compose run --rm pipeline python run_pipeline.py --doc-id 6b96d047-d7f5-4909-9597-360f6a527a95
+WARN[0003] Found orphan containers ([src-pipeline-run-c07ee6411806]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up. 
+[+] Creating 1/1
+ ✔ Container src-db-1  Running                                                                                             0.0s 
+2026-05-17 19:31:43,062 INFO Context impl PostgresqlImpl.
+2026-05-17 19:31:43,062 INFO Will assume transactional DDL.
+2026-05-17 19:31:43,069 INFO Single-document mode: doc_id=6b96d047-d7f5-4909-9597-360f6a527a95 stages=['silver', 'gold', 'synthesis']
+2026-05-17 19:31:43,162 INFO doc_id=6b96d047-d7f5-4909-9597-360f6a527a95 not in bronze — fetching from OData
+2026-05-17 19:31:43,162 INFO Fetching single document metadata for doc_id=6b96d047-d7f5-4909-9597-360f6a527a95
+2026-05-17 19:31:43,246 INFO Downloading file for doc_id=6b96d047-d7f5-4909-9597-360f6a527a95
+2026-05-17 19:31:43,326 INFO Saved application/pdf (21129 bytes) → data/6b96d047-d7f5-4909-9597-360f6a527a95.pdf
+2026-05-17 19:31:43,348 INFO Bronze record created for doc_id=6b96d047-d7f5-4909-9597-360f6a527a95
+2026-05-17 19:31:43,353 INFO Cleared table=synthesis for doc_id=6b96d047-d7f5-4909-9597-360f6a527a95
+2026-05-17 19:31:43,353 INFO Cleared table=gold_discarded for doc_id=6b96d047-d7f5-4909-9597-360f6a527a95
+2026-05-17 19:31:43,353 INFO Cleared table=gold for doc_id=6b96d047-d7f5-4909-9597-360f6a527a95
+2026-05-17 19:31:43,354 INFO Cleared table=silver_rejected for doc_id=6b96d047-d7f5-4909-9597-360f6a527a95
+2026-05-17 19:31:43,354 INFO Cleared table=silver for doc_id=6b96d047-d7f5-4909-9597-360f6a527a95
+2026-05-17 19:31:43,354 INFO Single-doc stage start: silver doc_id=6b96d047-d7f5-4909-9597-360f6a527a95
+2026-05-17 19:31:43,800 INFO Found credentials in environment variables.
+2026-05-17 19:31:46,121 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 19:31:46,146 INFO Accepted doc_id=6b96d047-d7f5-4909-9597-360f6a527a95 chunks=1 in=657 out=57 (2.5s) reason='The minister announces evaluation studies of the uitzendregime (temporary employment agency framework) and signals a forthcoming substantive response that may lead to regulatory changes affecting obligations for temporary employment agencies and triangular employment relationships.'
+2026-05-17 19:31:46,147 INFO Silver complete — accepted=1 rejected=0 errors=0 total=2.5s
+2026-05-17 19:31:46,147 INFO Single-doc stage done:  silver doc_id=6b96d047-d7f5-4909-9597-360f6a527a95
+2026-05-17 19:31:46,147 INFO Single-doc stage start: gold doc_id=6b96d047-d7f5-4909-9597-360f6a527a95
+2026-05-17 19:31:53,419 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 19:31:53,426 INFO Gold complete — docs=1 written=0 discarded=1 errors=0 total=7.3s
+2026-05-17 19:31:53,426 INFO Single-doc stage done:  gold doc_id=6b96d047-d7f5-4909-9597-360f6a527a95
+2026-05-17 19:31:53,426 INFO Single-doc stage start: synthesis doc_id=6b96d047-d7f5-4909-9597-360f6a527a95
+2026-05-17 19:31:53,436 WARNING No gold records found for doc_id=6b96d047-d7f5-4909-9597-360f6a527a95 — skipping
+2026-05-17 19:31:53,436 INFO Synthesis complete — written=0 skipped=1 errors=0 total=0.0s
+2026-05-17 19:31:53,436 INFO Single-doc stage done:  synthesis doc_id=6b96d047-d7f5-4909-9597-360f6a527a95
+2026-05-17 19:31:53,436 INFO Single-document run complete in 10.4s
+tomcoldenhoff@Toms-MacBook-Air src % 

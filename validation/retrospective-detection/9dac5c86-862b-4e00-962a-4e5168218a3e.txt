@@ -1,0 +1,77 @@
+tomcoldenhoff@Toms-MacBook-Air src % docker-compose run --rm pipeline python run_pipeline.py --doc-id 9dac5c86-862b-4e00-962a-4e5168218a3e
+WARN[0003] Found orphan containers ([src-pipeline-run-c07ee6411806]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up. 
+[+] Creating 1/1
+ ✔ Container src-db-1  Running                                                                                             0.0s 
+2026-05-17 18:48:08,336 INFO Context impl PostgresqlImpl.
+2026-05-17 18:48:08,336 INFO Will assume transactional DDL.
+2026-05-17 18:48:08,342 INFO Single-document mode: doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e stages=['silver', 'gold', 'synthesis']
+2026-05-17 18:48:08,424 INFO Cleared table=synthesis for doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e
+2026-05-17 18:48:08,424 INFO Cleared table=gold_discarded for doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e
+2026-05-17 18:48:08,424 INFO Cleared table=gold for doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e
+2026-05-17 18:48:08,425 INFO Cleared table=silver_rejected for doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e
+2026-05-17 18:48:08,425 INFO Cleared table=silver for doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e
+2026-05-17 18:48:08,425 INFO Single-doc stage start: silver doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e
+2026-05-17 18:48:08,800 INFO Found credentials in environment variables.
+2026-05-17 18:48:13,054 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:48:13,163 INFO Accepted doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e chunks=24 in=6682 out=114 (4.4s) reason='The document signals a forthcoming legislative proposal (wetsvoorstel) to overhaul the civic integration system (Wet inburgering), introducing new obligations for municipalities (mandatory broad intake, personal integration plans, enhanced enforcement), new requirements for integration-obligated newcomers (raised language level B1, result obligations, sanctions), and structural changes to market regulation of integration courses — all constituting early signals of new regulatory obligations and competences across employment, social welfare, and administrative law.'
+2026-05-17 18:48:13,163 INFO Silver complete — accepted=1 rejected=0 errors=0 total=4.5s
+2026-05-17 18:48:13,163 INFO Single-doc stage done:  silver doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e
+2026-05-17 18:48:13,163 INFO Single-doc stage start: gold doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e
+2026-05-17 18:48:27,077 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:48:27,093 INFO Gold chunk written doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e chunk=0 score=8 in=3682 out=737 (13.9s)
+2026-05-17 18:48:42,321 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:48:42,330 INFO Gold chunk written doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e chunk=1 score=7 in=3618 out=862 (15.2s)
+2026-05-17 18:48:58,200 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:48:58,208 INFO Gold chunk written doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e chunk=2 score=8 in=3655 out=903 (15.9s)
+2026-05-17 18:49:13,993 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:49:14,007 INFO Gold chunk written doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e chunk=3 score=7 in=3595 out=875 (15.8s)
+2026-05-17 18:49:30,475 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:49:30,493 INFO Gold chunk written doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e chunk=4 score=7 in=3670 out=969 (16.5s)
+2026-05-17 18:49:44,298 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:49:44,311 INFO Gold chunk written doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e chunk=5 score=7 in=3645 out=745 (13.8s)
+2026-05-17 18:49:57,298 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:49:57,313 INFO Gold chunk written doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e chunk=6 score=7 in=3610 out=760 (13.0s)
+2026-05-17 18:50:10,977 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:50:10,994 INFO Gold chunk written doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e chunk=7 score=7 in=3598 out=782 (13.7s)
+2026-05-17 18:50:26,577 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:50:26,584 INFO Gold chunk written doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e chunk=8 score=8 in=3607 out=932 (15.6s)
+2026-05-17 18:50:44,805 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:50:44,810 WARNING First parse attempt failed — retrying once
+2026-05-17 18:51:04,775 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:51:04,777 WARNING Extraction failed doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e chunk=9: Could not parse norm-frame JSON: 'Reasoning:\n\n**Step 1: Identify the normative signals**\nThe chunk contains several normative signals:\n1. Existing obligations under the Participatiewet for bijstandsgerechtigden (welfare recipients) — these are existing rules.\n2. A new proposal/intention to find a way for municipalities to enforce PIP agreements for inburgeringsplichtigen who are NOT on welfare (not under Participatiewet).\n3. A signal that during the PIP period, it will become possible to impose interim sanctions on inburgeringsplichtigen who culpably fail to cooperate.\n\nThe most forward-looking normative signal is the intention to enable municipalities to enforce PIP agreements for non-welfare inburgeringsplichtigen, and the possibility of imposing interim sanctions (boete or eigen bijdrage). This is a new regulatory intention.\n\n**Step 2: norm_type**\nThe signal about enabling municipalities to impose sanctions and enforce PIP agreements for non-welfare recipients creates a new legal power/competence for municipalities. This is a competence norm — it enables municipalities to act (impose sanctions). However, it also has a conduct dimension for the inburgeringsplichtige (obligation to cooperate). The primary signal here is the enabling of a new enforcement mechanism, so I\'ll treat it as a competence norm.\n\nActually, re-reading: "wordt het mogelijk tussentijds een sanctie op te leggen" — this is enabling language (competence/can). The subject is municipalities (or the enforcing authority). This is a competence norm.\n\n**Step 3: promulgation**\nThe document is from Kamerstukken II 2017-2018, 32 824, nr. 223. The "ik" (I) refers to the responsible minister — given the subject matter (inburgering), this is the Minister of Social Affairs and Employment (at that time, Wouter Koolmees, or possibly the State Secretary). The document references "het regeerakkoord" suggesting this is a new cabinet. Given the year 2017-2018 and the topic, this is likely Minister Koolmees (SZW) or possibly the responsible minister for integration. I\'ll note the ministry without a specific name since it\'s not explicitly stated.\n\n**Step 4: scope**\nIntegration (inburgering) policy in the Netherlands, specifically for inburgeringsplichtigen not covered by the Participatiewet.\n\n**Step 5: conditions**\nWhen an inburgeringsplichtige culpably fails to cooperate with the PIP during its term ("wanneer een inburgeringsplichtige gedurende de looptijd van de PIP verwijtbaar niet meewerkt").\n\n**Step 6: subject**\nMunicipalities (gemeenten) — they gain the competence to impose sanctions. The inburgeringsplichtige without welfare benefits is the regulated party.\n\n**Step 7: legal_modality**\n"wordt het mogelijk" = "can" — this is an enabling/competence norm.\n\n**Step 8: act_identifier**\nNo specific act is named for this new proposal. The Participatiewet is referenced for existing rules, but the new proposal is unnamed.\n\n**Step 9: signal_certainty**\n"streef ik ernaar om een manier te vinden" = advisory/ambition. The sanction possibility is stated more firmly ("wordt het mogelijk"), but overall this is still in the development phase. I\'ll say "proposed" for the sanction mechanism since it\'s more concrete, but "advisory" for the broader enforcement goal. The sanction language is more concrete — "proposed."\n\n**Step 10: source_type**\nThis is a policy letter/programme intention — "policy_intent" since no specific bill is named and it\'s still being worked out.\n\n```json\n{\n  "signal_summary": "The government intends to enable municipalities to enforce Personal Integration and Participation Plan (PIP) agreements — including imposing fines or own contributions — for integration-obligated persons who are not on welfare benefits and therefore fall outside the Participatiewet.",\n  "signal_certainty": "proposed",\n  "source_type": "policy_intent",\n  "norm_identifier": "signal-pip-handhaving-niet-bijstand-2018",\n  "norm_type": "competence",\n  "promulgation": "Minister of Social Affairs and Employment",\n  "scope": "Integration (inburgering) policy in the Netherlands, for inburgeringsplichtigen not covered by the'
+2026-05-17 18:51:20,855 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:51:20,871 INFO Gold chunk written doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e chunk=10 score=7 in=3622 out=912 (16.1s)
+2026-05-17 18:51:37,465 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:51:37,480 INFO Gold chunk written doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e chunk=11 score=7 in=3604 out=903 (16.6s)
+2026-05-17 18:51:52,291 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:51:52,308 INFO Gold chunk written doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e chunk=12 score=7 in=3591 out=843 (14.8s)
+2026-05-17 18:52:09,804 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:52:09,824 INFO Gold chunk written doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e chunk=13 score=7 in=3622 out=1014 (17.5s)
+2026-05-17 18:52:17,219 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:52:30,587 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:52:30,604 INFO Gold chunk written doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e chunk=15 score=7 in=3602 out=803 (13.4s)
+2026-05-17 18:52:45,993 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:52:46,010 INFO Gold chunk written doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e chunk=16 score=7 in=3658 out=851 (15.4s)
+2026-05-17 18:53:00,992 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:53:01,006 INFO Gold chunk written doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e chunk=17 score=7 in=3650 out=855 (15.0s)
+2026-05-17 18:53:16,566 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:53:16,582 INFO Gold chunk written doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e chunk=18 score=7 in=3626 out=885 (15.6s)
+2026-05-17 18:53:33,640 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:53:33,654 INFO Gold chunk written doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e chunk=19 score=7 in=3641 out=979 (17.1s)
+2026-05-17 18:53:50,931 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:53:50,944 INFO Gold chunk written doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e chunk=20 score=7 in=3587 out=973 (17.3s)
+2026-05-17 18:54:06,561 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:54:06,577 INFO Gold chunk written doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e chunk=21 score=8 in=3610 out=915 (15.6s)
+2026-05-17 18:54:20,004 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:54:20,011 INFO Gold chunk written doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e chunk=22 score=7 in=3581 out=798 (13.4s)
+2026-05-17 18:54:34,081 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:54:34,095 INFO Gold chunk written doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e chunk=23 score=8 in=3394 out=831 (14.1s)
+2026-05-17 18:54:34,096 INFO Gold complete — docs=1 written=22 discarded=1 errors=1 total=380.9s
+2026-05-17 18:54:34,096 INFO Single-doc stage done:  gold doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e
+2026-05-17 18:54:34,096 INFO Single-doc stage start: synthesis doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e
+2026-05-17 18:54:56,548 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:54:56,560 INFO Synthesis written doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e score=8 sectors=['Labour market', 'Housing / real estate', 'Consumer protection'] in=11512 out=1124 (22.5s)
+2026-05-17 18:54:56,560 INFO Synthesis complete — written=1 skipped=0 errors=0 total=22.5s
+2026-05-17 18:54:56,560 INFO Single-doc stage done:  synthesis doc_id=9dac5c86-862b-4e00-962a-4e5168218a3e
+2026-05-17 18:54:56,560 INFO Single-document run complete in 408.2s
+tomcoldenhoff@Toms-MacBook-Air src %

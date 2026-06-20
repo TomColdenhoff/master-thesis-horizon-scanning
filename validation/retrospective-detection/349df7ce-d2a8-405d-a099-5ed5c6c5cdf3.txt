@@ -1,0 +1,35 @@
+tomcoldenhoff@Toms-MacBook-Air src % docker-compose run --rm pipeline python run_pipeline.py --doc-id 349df7ce-d2a8-405d-a099-5ed5c6c5cdf3
+WARN[0003] Found orphan containers ([src-pipeline-run-c07ee6411806]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up. 
+[+] Creating 1/1
+ ✔ Container src-db-1  Running                                                                                             0.0s 
+2026-05-17 19:31:27,051 INFO Context impl PostgresqlImpl.
+2026-05-17 19:31:27,051 INFO Will assume transactional DDL.
+2026-05-17 19:31:27,058 INFO Single-document mode: doc_id=349df7ce-d2a8-405d-a099-5ed5c6c5cdf3 stages=['silver', 'gold', 'synthesis']
+2026-05-17 19:31:27,157 INFO doc_id=349df7ce-d2a8-405d-a099-5ed5c6c5cdf3 not in bronze — fetching from OData
+2026-05-17 19:31:27,157 INFO Fetching single document metadata for doc_id=349df7ce-d2a8-405d-a099-5ed5c6c5cdf3
+2026-05-17 19:31:27,229 INFO Downloading file for doc_id=349df7ce-d2a8-405d-a099-5ed5c6c5cdf3
+2026-05-17 19:31:27,332 INFO Saved application/pdf (21216 bytes) → data/349df7ce-d2a8-405d-a099-5ed5c6c5cdf3.pdf
+2026-05-17 19:31:27,351 INFO Bronze record created for doc_id=349df7ce-d2a8-405d-a099-5ed5c6c5cdf3
+2026-05-17 19:31:27,356 INFO Cleared table=synthesis for doc_id=349df7ce-d2a8-405d-a099-5ed5c6c5cdf3
+2026-05-17 19:31:27,356 INFO Cleared table=gold_discarded for doc_id=349df7ce-d2a8-405d-a099-5ed5c6c5cdf3
+2026-05-17 19:31:27,356 INFO Cleared table=gold for doc_id=349df7ce-d2a8-405d-a099-5ed5c6c5cdf3
+2026-05-17 19:31:27,357 INFO Cleared table=silver_rejected for doc_id=349df7ce-d2a8-405d-a099-5ed5c6c5cdf3
+2026-05-17 19:31:27,357 INFO Cleared table=silver for doc_id=349df7ce-d2a8-405d-a099-5ed5c6c5cdf3
+2026-05-17 19:31:27,357 INFO Single-doc stage start: silver doc_id=349df7ce-d2a8-405d-a099-5ed5c6c5cdf3
+2026-05-17 19:31:27,767 INFO Found credentials in environment variables.
+2026-05-17 19:31:30,127 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 19:31:30,152 INFO Accepted doc_id=349df7ce-d2a8-405d-a099-5ed5c6c5cdf3 chunks=1 in=655 out=53 (2.5s) reason='The Borstlap Commission final report on labour market regulation signals forthcoming regulatory changes affecting employment obligations and labour law, with a cabinet response and potential legislative proposals announced for April 2020.'
+2026-05-17 19:31:30,152 INFO Silver complete — accepted=1 rejected=0 errors=0 total=2.5s
+2026-05-17 19:31:30,152 INFO Single-doc stage done:  silver doc_id=349df7ce-d2a8-405d-a099-5ed5c6c5cdf3
+2026-05-17 19:31:30,152 INFO Single-doc stage start: gold doc_id=349df7ce-d2a8-405d-a099-5ed5c6c5cdf3
+2026-05-17 19:31:40,083 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 19:31:40,099 INFO Gold chunk written doc_id=349df7ce-d2a8-405d-a099-5ed5c6c5cdf3 chunk=0 score=7 in=3195 out=628 (9.9s)
+2026-05-17 19:31:40,100 INFO Gold complete — docs=1 written=1 discarded=0 errors=0 total=9.9s
+2026-05-17 19:31:40,100 INFO Single-doc stage done:  gold doc_id=349df7ce-d2a8-405d-a099-5ed5c6c5cdf3
+2026-05-17 19:31:40,100 INFO Single-doc stage start: synthesis doc_id=349df7ce-d2a8-405d-a099-5ed5c6c5cdf3
+2026-05-17 19:31:49,465 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 19:31:49,472 INFO Synthesis written doc_id=349df7ce-d2a8-405d-a099-5ed5c6c5cdf3 score=7 sectors=['Labour market', 'Corporate / governance'] in=1422 out=601 (9.4s)
+2026-05-17 19:31:49,472 INFO Synthesis complete — written=1 skipped=0 errors=0 total=9.4s
+2026-05-17 19:31:49,472 INFO Single-doc stage done:  synthesis doc_id=349df7ce-d2a8-405d-a099-5ed5c6c5cdf3
+2026-05-17 19:31:49,472 INFO Single-document run complete in 22.4s
+tomcoldenhoff@Toms-MacBook-Air src %

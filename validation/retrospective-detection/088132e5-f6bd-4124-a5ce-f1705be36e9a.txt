@@ -1,0 +1,46 @@
+tomcoldenhoff@Toms-MacBook-Air src % docker-compose run --rm pipeline python run_pipeline.py --doc-id 088132e5-f6bd-4124-a5ce-f1705be36e9a
+WARN[0003] Found orphan containers ([src-pipeline-run-c07ee6411806]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up. 
+[+] Creating 1/1
+ ✔ Container src-db-1  Running                                                                                             0.0s 
+2026-05-17 18:47:45,768 INFO Context impl PostgresqlImpl.
+2026-05-17 18:47:45,768 INFO Will assume transactional DDL.
+2026-05-17 18:47:45,776 INFO Single-document mode: doc_id=088132e5-f6bd-4124-a5ce-f1705be36e9a stages=['silver', 'gold', 'synthesis']
+2026-05-17 18:47:45,877 INFO Cleared table=synthesis for doc_id=088132e5-f6bd-4124-a5ce-f1705be36e9a
+2026-05-17 18:47:45,878 INFO Cleared table=gold_discarded for doc_id=088132e5-f6bd-4124-a5ce-f1705be36e9a
+2026-05-17 18:47:45,878 INFO Cleared table=gold for doc_id=088132e5-f6bd-4124-a5ce-f1705be36e9a
+2026-05-17 18:47:45,878 INFO Cleared table=silver_rejected for doc_id=088132e5-f6bd-4124-a5ce-f1705be36e9a
+2026-05-17 18:47:45,878 INFO Cleared table=silver for doc_id=088132e5-f6bd-4124-a5ce-f1705be36e9a
+2026-05-17 18:47:45,879 INFO Single-doc stage start: silver doc_id=088132e5-f6bd-4124-a5ce-f1705be36e9a
+2026-05-17 18:47:46,287 INFO Found credentials in environment variables.
+2026-05-17 18:47:49,028 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:47:49,090 INFO Accepted doc_id=088132e5-f6bd-4124-a5ce-f1705be36e9a chunks=9 in=6039 out=72 (2.9s) reason='The minister announces a forthcoming legislative proposal (wetsvoorstel) introducing new obligations for landlords through nationally uniform standards and a municipal landlord licensing system (verhuurdervergunning), signalling new permit requirements, prohibitions, and enforcement competences affecting the rental housing sector.'
+2026-05-17 18:47:49,090 INFO Silver complete — accepted=1 rejected=0 errors=0 total=2.9s
+2026-05-17 18:47:49,090 INFO Single-doc stage done:  silver doc_id=088132e5-f6bd-4124-a5ce-f1705be36e9a
+2026-05-17 18:47:49,090 INFO Single-doc stage start: gold doc_id=088132e5-f6bd-4124-a5ce-f1705be36e9a
+2026-05-17 18:48:01,586 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:48:01,602 INFO Gold chunk written doc_id=088132e5-f6bd-4124-a5ce-f1705be36e9a chunk=0 score=7 in=3693 out=692 (12.5s)
+2026-05-17 18:48:19,187 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:48:19,201 INFO Gold chunk written doc_id=088132e5-f6bd-4124-a5ce-f1705be36e9a chunk=1 score=7 in=3614 out=941 (17.6s)
+2026-05-17 18:48:36,063 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:48:36,080 INFO Gold chunk written doc_id=088132e5-f6bd-4124-a5ce-f1705be36e9a chunk=2 score=7 in=3611 out=903 (16.9s)
+2026-05-17 18:48:50,492 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:48:50,499 INFO Gold chunk written doc_id=088132e5-f6bd-4124-a5ce-f1705be36e9a chunk=3 score=7 in=3617 out=838 (14.4s)
+2026-05-17 18:49:05,475 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:49:05,490 INFO Gold chunk written doc_id=088132e5-f6bd-4124-a5ce-f1705be36e9a chunk=4 score=7 in=3584 out=856 (15.0s)
+2026-05-17 18:49:19,198 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:49:19,223 INFO Gold chunk written doc_id=088132e5-f6bd-4124-a5ce-f1705be36e9a chunk=5 score=7 in=3586 out=799 (13.7s)
+2026-05-17 18:49:33,950 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:49:33,966 INFO Gold chunk written doc_id=088132e5-f6bd-4124-a5ce-f1705be36e9a chunk=6 score=7 in=3585 out=864 (14.7s)
+2026-05-17 18:49:47,303 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:49:47,310 INFO Gold chunk written doc_id=088132e5-f6bd-4124-a5ce-f1705be36e9a chunk=7 score=7 in=3623 out=801 (13.3s)
+2026-05-17 18:50:02,415 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:50:02,433 INFO Gold chunk written doc_id=088132e5-f6bd-4124-a5ce-f1705be36e9a chunk=8 score=7 in=3303 out=781 (15.1s)
+2026-05-17 18:50:02,435 INFO Gold complete — docs=1 written=9 discarded=0 errors=0 total=133.3s
+2026-05-17 18:50:02,435 INFO Single-doc stage done:  gold doc_id=088132e5-f6bd-4124-a5ce-f1705be36e9a
+2026-05-17 18:50:02,435 INFO Single-doc stage start: synthesis doc_id=088132e5-f6bd-4124-a5ce-f1705be36e9a
+2026-05-17 18:50:22,103 INFO HTTP Request: POST https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-sonnet-4-6/invoke "HTTP/1.1 200 OK"
+2026-05-17 18:50:22,119 INFO Synthesis written doc_id=088132e5-f6bd-4124-a5ce-f1705be36e9a score=8 sectors=['Housing / real estate', 'Data protection / privacy', 'Labour market'] in=5196 out=1025 (19.7s)
+2026-05-17 18:50:22,120 INFO Synthesis complete — written=1 skipped=0 errors=0 total=19.7s
+2026-05-17 18:50:22,120 INFO Single-doc stage done:  synthesis doc_id=088132e5-f6bd-4124-a5ce-f1705be36e9a
+2026-05-17 18:50:22,120 INFO Single-document run complete in 156.3s
+tomcoldenhoff@Toms-MacBook-Air src %
